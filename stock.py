@@ -13,9 +13,9 @@ class Quote:
         self.spot = None
 
     def update(self):
-        self.bid = self.client.get_buy_price(currency_pair=self.currency_pair)
-        self.ask = self.client.get_sell_price(currency_pair=self.currency_pair)
-        self.spot = self.client.get_spot_price(currency_pair=self.currency_pair)
+        self.bid = self.client.get_buy_price(currency_pair=self.currency_pair).amount
+        self.ask = self.client.get_sell_price(currency_pair=self.currency_pair).amount
+        self.spot = self.client.get_spot_price(currency_pair=self.currency_pair).amount
         return True
 
 
@@ -43,7 +43,6 @@ class Stock:
             print(self.symbol)
             print(self.payment_method)
 
-            count = count * 0.97    #need clarification of fee
             buy = self.client.buy(self.id, amount='%s'%count, currency=self.symbol,
                 commit=False, payment_method=self.payment_method)
             print(buy)

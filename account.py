@@ -62,7 +62,7 @@ class Account:
             logging.error('getting quote returned error')
             return None
 
-        stock.value = float(quote.spot.amount)
+        stock.value = float(quote.spot)
         stock.count = 0
         stock.id = stock.symbol
         stock.payment_method = self.payment_method

@@ -3,6 +3,7 @@
 import logging
 from coinbase.wallet.client import Client as CoinbaseClient
 from .account import Account
+from .stock import Quote
 
 
 class Client:
@@ -44,6 +45,7 @@ class Client:
             logging.error('no session')
             raise BrokenPipeError
 
+        quote = Quote(self.client, symbol)
         quote.update()
 
         return quote
