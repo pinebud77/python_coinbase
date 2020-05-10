@@ -41,18 +41,11 @@ class Stock:
         print('order = %f' % count)
 
         if count > 0:
-            print(self.id)
-            print(count)
-            print(self.symbol)
-            print(self.payment_method)
-
-            buy = self.client.buy(self.id, amount='%s'%count, currency=self.symbol,
-                commit=False, payment_method=self.payment_method)
-            print(buy)
+            self.client.buy(self.id, amount='%s'%count, currency=self.symbol,
+                commit=True, payment_method=self.payment_method)
         else:
-            buy = self.client.sell(self.id, amount='%s'%(-count), currency=self.symbol,
-                commit=False, payment_method=self.payment_method)
-            print(buy)
+            self.client.sell(self.id, amount='%s'%(-count), currency=self.symbol,
+                commit=True, payment_method=self.payment_method)
 
         return True
 
