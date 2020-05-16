@@ -52,7 +52,7 @@ class Account:
             symbol = cur.balance.currency
             amount = amount
             value = float(cur.native_balance.amount) / amount
-            self.net_value += value
+            self.net_value += value * amount
 
             stock = Stock(self.client, symbol, self)
             stock.count = amount
